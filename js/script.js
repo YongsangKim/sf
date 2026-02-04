@@ -19,26 +19,34 @@ menuItems.forEach(item => {
 });
 
 
-// 모든 모달 열기 버튼에 이벤트 등록
-document.querySelectorAll(".openModalBtn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const targetId = btn.getAttribute("data-target");
+// 이벤트 위임으로 모달 열기 처리
+document.body.addEventListener("click", (e) => {
+    const openBtn = e.target.closest(".openModalBtn");
+    if (openBtn) {
+        e.preventDefault(); // 👉 a 링크 기본 이동 막기
+        const targetId = openBtn.getAttribute("data-target");
         const modal = document.getElementById(targetId);
-        modal.style.display = "block";
-    });
-});
+        if (modal) {
+            modal.style.display = "block";
+            modal.classList.add("active");
+        }
+    }
 
-// 모든 닫기 버튼에 이벤트 등록
-document.querySelectorAll(".modal .close").forEach(closeBtn => {
-    closeBtn.addEventListener("click", () => {
-        closeBtn.closest(".modal").style.display = "none";
-    });
+    // 닫기 버튼 처리
+    if (e.target.classList.contains("close")) {
+        const modal = e.target.closest(".modal");
+        if (modal) {
+            modal.style.display = "none";
+            modal.classList.remove("active");
+        }
+    }
 });
 
 // 배경 클릭 시 닫기
 window.addEventListener("click", (event) => {
     if (event.target.classList.contains("modal")) {
         event.target.style.display = "none";
+        event.target.classList.remove("active"); // 👉 active 클래스 제거
     }
 });
   
@@ -57,7 +65,16 @@ tabs.forEach((tab, index) => {
 
         tab.setAttribute('aria-selected', true);
         tab.classList.add('active');
-        panels[index].hidden = false;
+        if (panels[index]) {
+            panels[index].hidden = false; 
+        }
+
+        // URL 이동 추가
+        const url = tab.dataset.url;
+        if (url) {
+            window.location.href = url; // 같은 창에서 이동
+            // window.open(url, "_blank"); // 새 창에서 열고 싶을 경우
+        }
     });
 });
 
@@ -171,3 +188,61 @@ function playAllPlayers() {
 function getPlayer(index) {
     return players[index];
 }
+
+// 무기
+function showJson(menu, btn, parentMenu = null) {
+    // 모든 버튼 비활성화
+    document.querySelectorAll(".info-weapon button").forEach(b => b.setAttribute("aria-selected", "false"));
+
+    // 현재 버튼 활성화
+    btn.setAttribute("aria-selected", "true");
+
+    // 하위 메뉴 클릭 시 상위 메뉴도 활성화
+    if (parentMenu) {
+        const parentBtn = [...document.querySelectorAll("button")]
+            .find(b => b.textContent.trim() === parentMenu);
+        if (parentBtn) parentBtn.setAttribute("aria-selected", "true");
+
+        // 같은 그룹의 다른 하위 메뉴는 비활성화
+        const siblings = parentBtn.nextElementSibling?.querySelectorAll("button");
+        if (siblings) siblings.forEach(sib => {
+            if (sib !== btn) sib.setAttribute("aria-selected", "false");
+        });
+    }
+
+    // 상위 메뉴 클릭 시 첫 번째 하위 메뉴만 활성화
+    if (!parentMenu && typeof weaponData[menu] === "object" && !Array.isArray(weaponData[menu])) {
+        const firstChild = Object.keys(weaponData[menu])[0];
+        const childBtn = [...document.querySelectorAll("button")]
+            .find(b => b.textContent.trim() === firstChild);
+        if (childBtn) childBtn.setAttribute("aria-selected", "true");
+        menu = firstChild; // 첫 번째 하위 메뉴 데이터로 렌더링
+        parentMenu = Object.keys(weaponData).find(key => weaponData[key][firstChild]);
+    }
+
+    // 무기 리스트 렌더링
+    const list = document.getElementById("weaponList");
+    list.innerHTML = "";
+
+    let items = parentMenu ? weaponData[parentMenu][menu] : weaponData[menu];
+    if (Array.isArray(items)) {
+        items.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+            <a href="#" class="openModalBtn" data-target="${item.모달}">
+                <img src="${item.이미지}" alt="">
+                <span class="info-weapon-tit">${item.이름}</span>
+            </a>
+            `;
+            list.appendChild(li);
+        });
+    }
+  }
+  
+  // 페이지 로드 시 기본 활성화: 첫 번째 상위 메뉴 + 첫 번째 하위 메뉴
+  window.addEventListener("DOMContentLoaded", () => {
+        const firstParentBtn = document.querySelector(".info-weapon-depth1 > li > button");
+        if (firstParentBtn) {
+            showJson(firstParentBtn.textContent.trim(), firstParentBtn);
+        }
+  });

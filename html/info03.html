@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SF</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="logo"><a href=""><img src="../img/logo.png" alt="Special Force Remastered"></a></div>
+            <nav>
+                <ul class="gnb">
+                    <li>
+                        <a href="">새소식</a>
+                        <ul class="sub-menu">
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">업데이트</a></li>
+                            <li><a href="">이벤트</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">게임정보</a>
+                        <ul class="sub-menu">
+                            <li><a href="">스페셜포스 IP</a></li>
+                            <li><a href="">맵</a></li>
+                            <li><a href="">무기</a></li>
+                            <li><a href="">캐릭터</a></li>
+                            <li><a href="">기본가이드</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">미디어</a>
+                        <ul class="sub-menu">
+                            <li><a href="">영상</a></li>
+                            <li><a href="">아카이브</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">고객센터</a>
+                        <ul class="sub-menu">
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">1:1문의</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="aside">
+                <button type="button" id="openModalBtn" class="openModalBtn" data-target="modal1"><span class="hide">GAME START</span></button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="sub-visual02">
+                <div class="hide">게임정보</div>
+            </div>
+            <div class="content">
+                <section class="sub-news">
+                    <div class="tabs" role="tablist" aria-label="정보 탭">
+                        <div class="tabs-inner">
+                            <button role="tab" aria-selected="false" data-url="info.html">스페셜포스 IP</button>
+                            <button role="tab" aria-selected="false" data-url="info02.html">맵</button>
+                            <button role="tab" aria-selected="true" data-url="info03.html">무기</button>
+                            <button role="tab" aria-selected="false" data-url="info04.html">캐릭터</button>
+                            <button role="tab" aria-selected="false" data-url="info05.html">기본가이드</button>
+                        </div>
+                        <div class="info-weapon">
+                            <ul class="info-weapon-depth1">
+                                <li>
+                                    <button type="button" aria-selected="false" onclick="showJson('주무기', this)">주무기</button>
+                                    <ul class="info-weapon-depth2">
+                                        <li><button type="button" aria-selected="false" onclick="showJson('돌격소총', this, '주무기')">돌격소총</button></li>
+                                        <li><button type="button" aria-selected="false" onclick="showJson('저격소총', this, '주무기')">저격소총</button></li>
+                                        <li><button type="button" aria-selected="false" onclick="showJson('기관총', this, '주무기')">기관총</button></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button type="button" aria-selected="false" onclick="showJson('보조무기', this)">보조무기</button>
+                                    <ul class="info-weapon-depth2">
+                                        <li><button type="button" aria-selected="false" onclick="showJson('권총', this, '보조무기')">권총</button></li>
+                                        <li><button type="button" aria-selected="false" onclick="showJson('샷건', this, '보조무기')">샷건</button></li>
+                                    </ul>
+                                </li>
+                                <li><button type="button" aria-selected="false" onclick="showJson('근접무기', this)">근접무기</button></li>
+                                <li><button type="button" aria-selected="false" onclick="showJson('전술무기', this)">전술무기</button></li>
+                            </ul>
+
+                            <div class="info-weapon-wrap">
+                                <ul class="info-weapon-list" id="weaponList"></ul>
+                            
+                                <div id="modal2" class="modal modal3">
+                                    <div class="modal-content">
+                                        <button type="button" class="close"><span class="hide">닫기</span></button>
+                                        <h2>NOVESKE N4</h2>
+                                        <div class="weapon-pop-cont">
+                                            <div class="weapon-pop-left">
+                                                <div class="weapon-txt01">
+                                                    <span>팔방미인</span>
+                                                    <span>정밀</span>
+                                                    <span>낮은 화력</span>
+                                                </div>
+                                                <div class="weapon-txt02">
+                                                    NOVESKE N4는 뛰어난 완성도와 안정적인 성능으로 사랑받는 
+                                                    AR-15 계열 소총이다. <br>
+                                                    정밀하게 제작 된 배럴과 균형 잡힌 구조 덕분에 사격 시 반동이 
+                                                    부드럽고 조작감이 우수하다. <br>
+                                                    다양한 전술 상황에 잘 어울리며, 초보자부터 숙련자까지 누구나 
+                                                    편안하게 다룰 수 있는 신뢰도 높은 무기다.
+                                                </div>
+                                                <ul class="weapon-property">
+                                                    <li>
+                                                        <div class="weapon-property-tit">피해</div>
+                                                        <div class="weapon-property-val">30</div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="weapon-property-tit">발사속도</div>
+                                                        <div class="weapon-property-val">923 <span class="unit">RPM</span></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="weapon-property-tit">데미지<br>안정거리</div>
+                                                        <div class="weapon-property-val">27 <span class="unit">M</span></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="weapon-property-tit">장탄수</div>
+                                                        <div class="weapon-property-val">30/120</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="weapon-pop-right">
+                                                <div class="weapon-img"><img src="../img/tmp/thumb_weapon02.jpg" alt=""></div>
+                                                <ul class="weapon-status">
+                                                    <li>
+                                                        <div class="weapon-status-txt">
+                                                            <span>반동제어</span>
+                                                            <span>080</span>
+                                                        </div>
+                                                        <div class="weapon-status-graph">
+                                                            <span style="width:100%"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="weapon-status-txt">
+                                                            <span>정밀도</span>
+                                                            <span>078</span>
+                                                        </div>
+                                                        <div class="weapon-status-graph">
+                                                            <span style="width:70%"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="weapon-status-txt">
+                                                            <span>조작성</span>
+                                                            <span>068</span>
+                                                        </div>
+                                                        <div class="weapon-status-graph">
+                                                            <span style="width:60%"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="weapon-status-txt">
+                                                            <span>기동성</span>
+                                                            <span>088</span>
+                                                        </div>
+                                                        <div class="weapon-status-graph">
+                                                            <span style="width:60%"></span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal3" class="modal modal3">
+                                    <div class="modal-content">
+                                        <button type="button" class="close"><span class="hide">닫기</span></button>
+                                        <h2>수류탄</h2>
+                                        <div class="weapon-pop-cont">
+                                            <div class="weapon-pop-left">
+                                                <div class="weapon-txt02">
+                                                    NOVESKE N4는 뛰어난 완성도와 안정적인 성능으로 사랑받는 
+                                                    AR-15 계열 소총이다. <br>
+                                                    정밀하게 제작 된 배럴과 균형 잡힌 구조 덕분에 사격 시 반동이 
+                                                    부드럽고 조작감이 우수하다. <br>
+                                                    다양한 전술 상황에 잘 어울리며, 초보자부터 숙련자까지 누구나 
+                                                    편안하게 다룰 수 있는 신뢰도 높은 무기다.
+                                                </div>
+                                            </div>
+                                            <div class="weapon-pop-right">
+                                                <div class="weapon-img"><img src="../img/tmp/thumb_weapon02.jpg" alt=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-logo"><a href="https://www.dragonflygame.com/" target="_blank"><img src="../img/footer_logo.png" alt="DragonFly"></a></div>
+            <div class="footer-center">
+                <div class="footer-menu">
+                    <ul>
+                        <li><a href="">개인정보 처리방침</a></li>
+                        <li><a href="">서비스 이용약관</a></li>
+                        <li><a href="">운영정책</a></li>
+                    </ul>
+                </div>
+                <div class="footer-copy">COPYRIGHT © DRAGONFLY GF CO,.LTD All RIGHT RESERVED</div>
+            </div>
+            <div class="footer-sns">
+                <a href="" class="footer-youtube"><span class="hide">youtube</span></a>
+                <a href="" class="footer-blog"><span class="hide">blog</span></a>
+                <img src="../img/footer_age.png" alt="청소년이용불가">
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <button type="button" class="close"><span class="hide">닫기</span></button>
+            <h2>PLAY NOW</h2>
+            
+            <div class="game-play">
+                <button type="button" class="play-steam"><span class="hide">STEAM</span></button>
+                <button type="button" class="play-epic"><span class="hide">Epic Games</span></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        const weaponData = {
+            "주무기": {
+                "돌격소총": [
+                    { 이름: "NOVESKEN44", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                ],
+                "저격소총": [
+                    { 이름: "M24", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3" }
+                ],
+                "기관총": [
+                    { 이름: "M249", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                ]
+            },
+            "보조무기": {
+                "권총": [
+                    { 이름: "GLOCK19", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                ],
+                "샷건": [
+                    { 이름: "SPAS-12", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                ]
+            },
+            "근접무기": [
+                { 이름: "Combat Knife", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+            ],
+            "전술무기": [
+                { 이름: "Smoke Grenade", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" },
+                { 이름: "Flashbang", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+            ]
+        };
+    </script>
+</body>
+</html>
