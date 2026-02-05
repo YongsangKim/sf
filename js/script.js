@@ -29,6 +29,134 @@ document.body.addEventListener("click", (e) => {
         if (modal) {
             modal.style.display = "block";
             modal.classList.add("active");
+
+            // modal3일 때 h2 값 변경
+            if (modal.classList.contains("modal3")) {
+                const parentMenu = openBtn.getAttribute("data-parent");
+                const index = openBtn.getAttribute("data-index");
+                const childMenu = openBtn.getAttribute("data-child"); // 2depth 메뉴명 (없을 수도 있음)
+
+                // JSON에서 해당 무기 데이터 가져오기
+                let item;
+                if (parentMenu != 'null') {
+                    // 2depth 있는 경우
+                    item = weaponData[parentMenu][childMenu][index];
+                } else {
+                    // 2depth 없는 경우
+                    item = weaponData[childMenu][index];
+                }
+                
+
+                // h2에 이름 표시
+                const h2 = modal.querySelector("h2");
+                if (h2) h2.textContent = item.이름;
+
+                // 설명 표시
+                const desc = modal.querySelector(".weapon-txt02");
+                if (desc) desc.innerHTML = item.설명;
+
+                // 이미지 변경
+                const img = modal.querySelector("img");
+                if (img) img.src = item.이미지;
+
+                if (item.모달 == 'modal2') {
+                    // weapon-txt01 안에 span들 동적으로 추가
+                    const txt01 = modal.querySelector(".weapon-txt01");
+                    if (txt01) {
+                        // 기존 내용 초기화
+                        txt01.innerHTML = "";
+
+                        // JSON 배열(item.특성) 순회하며 span 추가
+                        if (Array.isArray(item.특성)) {
+                            item.특성.forEach(text => {
+                                const span = document.createElement("span");
+                                span.textContent = text;
+                                txt01.appendChild(span);
+                            });
+                        }
+                    }
+
+                    // 항목 매핑 정의
+                    const propertyMap = {
+                        "피해": { key: "피해", target: "text" },
+                        "발사속도": { key: "발사속도", target: "em" },
+                        "데미지안정거리": { key: "데미지안정거리", target: "em" },
+                        "장탄수": { key: "장탄수", target: "text" }
+                    };
+
+                    const titElements = modal.querySelectorAll(".weapon-property-tit");
+
+                    titElements.forEach(tit => {
+                        const label = tit.textContent.replace(/\s+/g, ""); // 공백/줄바꿈 제거
+                        const map = propertyMap[label];
+                        if (!map) return; // 매핑 없는 항목은 무시
+
+                        const valEl = tit.nextElementSibling;
+                        if (!valEl || !valEl.classList.contains("weapon-property-val")) return;
+
+                        const value = item[map.key]; // JSON에서 값 가져오기
+                        if (map.target === "em") {
+                            const emEl = valEl.querySelector("em");
+                            if (emEl) emEl.textContent = value;
+                        } else {
+                            valEl.textContent = value;
+                        }
+                    });
+
+                    // weapon-status 안에 li들 동적으로 추가
+                    const statusList = modal.querySelector(".weapon-status");
+                    if (statusList) {
+                        statusList.innerHTML = ""; // 기존 내용 초기화
+
+                        if (Array.isArray(item.능력치)) {
+                            item.능력치.forEach(stat => {
+                                const li = document.createElement("li");
+
+                                // 텍스트 부분
+                                const txtDiv = document.createElement("div");
+                                txtDiv.className = "weapon-status-txt";
+
+                                const nameSpan = document.createElement("span");
+                                nameSpan.textContent = stat.이름;
+
+                                const valueSpan = document.createElement("span");
+                                // 숫자 3자리 맞추기 (예: 080)
+                                valueSpan.textContent = String(stat.값).padStart(3, "0");
+
+                                txtDiv.appendChild(nameSpan);
+                                txtDiv.appendChild(valueSpan);
+
+                                // 그래프 부분
+                                const graphDiv = document.createElement("div");
+                                graphDiv.className = "weapon-status-graph";
+
+                                const barSpan = document.createElement("span");
+                                barSpan.style.width = `${stat.값}%`; // 값에 따라 width 설정
+
+                                graphDiv.appendChild(barSpan);
+
+                                // li에 추가
+                                li.appendChild(txtDiv);
+                                li.appendChild(graphDiv);
+
+                                statusList.appendChild(li);
+                            });
+                        }
+                    }
+                }
+            }
+
+            // .modal6일 때 archive-img 교체
+            if (modal.classList.contains("modal6")) {
+                const clickedImg = openBtn.querySelector("img");
+                const archiveImg = modal.querySelector(".archive-img img"); 
+                // archive-img 안에 img 태그가 있다고 가정
+
+                if (clickedImg && archiveImg) {
+                    archiveImg.src = clickedImg.src;
+                    archiveImg.alt = clickedImg.alt || "archive image";
+                }
+            }            
         }
     }
 
@@ -221,18 +349,24 @@ function showJson(menu, btn, parentMenu = null) {
     }
 
     // 무기 리스트 렌더링
+
     const list = document.getElementById("weaponList");
     list.innerHTML = "";
 
     let items = parentMenu ? weaponData[parentMenu][menu] : weaponData[menu];
     if (Array.isArray(items)) {
-        items.forEach(item => {
+        items.forEach((item, idx) => {
             const li = document.createElement("li");
             li.innerHTML = `
-            <a href="#" class="openModalBtn" data-target="${item.모달}">
-                <img src="${item.이미지}" alt="">
-                <span class="info-weapon-tit">${item.이름}</span>
-            </a>
+                <a href="#" 
+                    class="openModalBtn" 
+                    data-target="${item.모달}" 
+                    data-parent="${parentMenu}"
+                    data-child="${menu}"
+                    data-index="${idx}">
+                    <img src="${item.이미지}" alt="">
+                    <span class="info-weapon-tit">${item.이름}</span>
+                </a>
             `;
             list.appendChild(li);
         });

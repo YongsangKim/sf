@@ -365,6 +365,7 @@ nav {
 
 .sub-visual01{height:308px;background:url('../img/bg_sub1.png') no-repeat}
 .sub-visual02{height:308px;background:url('../img/bg_sub2.png') no-repeat}
+.sub-visual03{height:308px;background:url('../img/bg_sub3.png') no-repeat}
 .tabs-inner{display:flex;margin:0 70px}
 .tabs-inner button{flex:1;height:80px;font-size:36px;color:#8c8ca7;font-weight:500;background:#271e13;border:solid 2px #725432}
 .tabs-inner button[aria-selected="true"] { background-color: #cd8828; color: #000; }
@@ -452,8 +453,8 @@ nav {
 .weapon-pop-cont{display:flex;width:1560px;margin:20px auto;justify-content: space-between}
 .weapon-pop-left{width:790px}
 .weapon-pop-right{width:730px}
-.weapon-txt01{font-size:30px;color:#816637;font-weight:500;padding:0 10px}
-.weapon-txt01 span + span::before{content:'| '}
+.weapon-txt01{font-size:30px;color:#816637;font-weight:500;padding:0 10px;display:flex}
+.weapon-txt01 span + span::before{content:'|';margin:0 10px}
 .weapon-txt02{background:#e1e1df;height:400px;color:#000;font-size:30px;line-height:40px;padding:30px 40px}
 .weapon-img{text-align:center}
 .weapon-status{margin-top:30px}
@@ -488,6 +489,81 @@ nav {
 }
 .modal4.active .sub-map-video{display:block}
 .modal4 .sub-map-video{left:1154px;top:72px}
-.guide-list ul{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;width:1700px;margin:70px auto 0}
+.guide-list ul{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;width:1700px;margin:70px auto 0;gap:30px}
+.guide-list li{position:relative}
+.guide-list li a{display:block}
+.guide-list li a span{position:absolute;left:5%;top:calc(50% - 25px);width:90%;background:rgba(0,0,0,0.6);text-align:center;font-size:40px;height:50px;line-height:50px;font-weight:300}
 .guide-view-wrap{background:#fff;padding:60px 120px;margin-top:70px}
 .guide-view-subj{border-bottom:solid 1px #000;font-size:34px;font-weight:500;color:#000;display:flex;gap:30px;padding-bottom:15px;margin-bottom:15px}
+
+.media-video-wrap{position:relative;min-height:1000px}
+.media-video{padding:90px 70px;display:grid;grid-template-columns: 1fr 1fr;gap:40px;}
+.media-video li{border:solid 2px #676665}
+.media-video li a{display:block;position:relative}
+.media-video li a::after{content:'';position:absolute;left:calc(50% - 80px);top:calc(50% - 80px);width:160px;height:160px;background:url('../img/ico_play.png') 50% no-repeat}
+
+.modal5{display:none}
+.modal5 .modal-content{position:absolute;left:calc(50% - 880px);top:70px;width:1760px;height:calc(100vh - 140px);background:#000;margin:0 auto;border:solid 2px #676665}
+.modal5 .close {
+    position:absolute;
+    right:20px;
+    top:18px;
+    width:62px;
+    height:62px;
+    background:url('../img/ico_close02.png') no-repeat;
+    cursor: pointer;
+}
+.modal5 .close:hover {
+    background:url('../img/ico_close02_over.png') no-repeat;
+}
+.modal5 .sub-map-video{position:static;display:none;height:100%;overflow:hidden}
+.modal5 .sub-map-video iframe{width:100%;height:100%}
+.modal5.active .sub-map-video{display:block}
+
+.media-archive{position:relative;width:1760px;margin:70px auto}
+.media-archive .grid {
+  background: #000;
+}
+
+/* clear fix */
+.media-archive .grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.media-archive .grid-sizer,
+.media-archive .grid-item {
+  width: calc((100% - 40px)/3);
+}
+
+.media-archive .grid-item {
+  float: left;
+  margin-bottom:20px;
+  border:solid 2px #676665;
+}
+
+.media-archive .grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+.modal6{display:none}
+.modal6 .modal-content{position:absolute;left:calc(50% - 880px);top:70px;width:1760px;height:calc(100vh - 140px);background:#000;margin:0 auto;border:solid 2px #676665}
+.modal6 .close {
+    position:absolute;
+    right:20px;
+    top:18px;
+    width:62px;
+    height:62px;
+    background:url('../img/ico_close02.png') no-repeat;
+    cursor: pointer;
+}
+.modal6 .close:hover {
+    background:url('../img/ico_close02_over.png') no-repeat;
+}
+
+.archive-img{height:100%}
+.archive-img img{width:100%;height:100%;object-fit:contain}

@@ -114,11 +114,11 @@
                                                     </li>
                                                     <li>
                                                         <div class="weapon-property-tit">발사속도</div>
-                                                        <div class="weapon-property-val">923 <span class="unit">RPM</span></div>
+                                                        <div class="weapon-property-val"><em>923</em><span class="unit">RPM</span></div>
                                                     </li>
                                                     <li>
                                                         <div class="weapon-property-tit">데미지<br>안정거리</div>
-                                                        <div class="weapon-property-val">27 <span class="unit">M</span></div>
+                                                        <div class="weapon-property-val"><em>27</em><span class="unit">M</span></div>
                                                     </li>
                                                     <li>
                                                         <div class="weapon-property-tit">장탄수</div>
@@ -234,29 +234,40 @@
         const weaponData = {
             "주무기": {
                 "돌격소총": [
-                    { 이름: "NOVESKEN44", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                    { 
+                        이름: "NOVESKEN44", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2", 
+                        특성: ["팔방미인2", "정밀2", "낮은 화력2"], 
+                        피해: "123", 발사속도: "123", 데미지안정거리: "123", 장탄수: "123/123", 
+                        능력치: [
+                            { 이름: "반동제어", 값: 80 },
+                            { 이름: "정밀도", 값: 78 },
+                            { 이름: "조작성", 값: 68 },
+                            { 이름: "기동성", 값: 88 }
+                        ],
+                        설명: "NOVESKE N4는 뛰어난 완성도와 안정적인 성능으로 사랑받는 AR-15 계열 소총이다. <br>정밀하게 제작 된 배럴과 균형 잡힌 구조 덕분에 사격 시 반동이 부드럽고 조작감이 우수하다. <br>다양한 전술 상황에 잘 어울리며, 초보자부터 숙련자까지 누구나 편안하게 다룰 수 있는 신뢰도 높은 무기다." 
+                    }
                 ],
                 "저격소총": [
-                    { 이름: "M24", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3" }
+                    { 이름: "M24", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 저격소총"}
                 ],
                 "기관총": [
-                    { 이름: "M249", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                    { 이름: "M249", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 기관총"}
                 ]
             },
             "보조무기": {
                 "권총": [
-                    { 이름: "GLOCK19", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                    { 이름: "GLOCK19", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 권총"}
                 ],
                 "샷건": [
-                    { 이름: "SPAS-12", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                    { 이름: "SPAS-12", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 샷건"}
                 ]
             },
             "근접무기": [
-                { 이름: "Combat Knife", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                { 이름: "Combat Knife", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 근접무기"}
             ],
             "전술무기": [
-                { 이름: "Smoke Grenade", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" },
-                { 이름: "Flashbang", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal2" }
+                { 이름: "Smoke Grenade", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 전술무기"},
+                { 이름: "Flashbang", 이미지: "../img/tmp/thumb_weapon.jpg", 모달: "modal3", 설명: "최신형 전술무기"}
             ]
         };
     </script>
