@@ -371,12 +371,24 @@ function showJson(menu, btn, parentMenu = null) {
             list.appendChild(li);
         });
     }
-  }
+}
   
-  // 페이지 로드 시 기본 활성화: 첫 번째 상위 메뉴 + 첫 번째 하위 메뉴
-  window.addEventListener("DOMContentLoaded", () => {
-        const firstParentBtn = document.querySelector(".info-weapon-depth1 > li > button");
-        if (firstParentBtn) {
-            showJson(firstParentBtn.textContent.trim(), firstParentBtn);
-        }
-  });
+// 페이지 로드 시 기본 활성화: 첫 번째 상위 메뉴 + 첫 번째 하위 메뉴
+window.addEventListener("DOMContentLoaded", () => {
+    const firstParentBtn = document.querySelector(".info-weapon-depth1 > li > button");
+    if (firstParentBtn) {
+        showJson(firstParentBtn.textContent.trim(), firstParentBtn);
+    }
+});
+
+// 파일 업로드
+const fileInput = document.getElementById('fileInput');
+const fileName = document.getElementById('fileName');
+
+fileInput.addEventListener('change', function() {
+    if (this.files.length > 0) {
+        fileName.textContent = "선택된 파일: " + this.files[0].name;
+    } else {
+        fileName.textContent = "선택된 파일 없음";
+    }
+});

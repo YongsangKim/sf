@@ -366,6 +366,7 @@ nav {
 .sub-visual01{height:308px;background:url('../img/bg_sub1.png') no-repeat}
 .sub-visual02{height:308px;background:url('../img/bg_sub2.png') no-repeat}
 .sub-visual03{height:308px;background:url('../img/bg_sub3.png') no-repeat}
+.sub-visual04{height:308px;background:url('../img/bg_sub4.png') no-repeat}
 .tabs-inner{display:flex;margin:0 70px}
 .tabs-inner button{flex:1;height:80px;font-size:36px;color:#8c8ca7;font-weight:500;background:#271e13;border:solid 2px #725432}
 .tabs-inner button[aria-selected="true"] { background-color: #cd8828; color: #000; }
@@ -567,3 +568,99 @@ nav {
 
 .archive-img{height:100%}
 .archive-img img{width:100%;height:100%;object-fit:contain}
+
+.faq-list{width:1760px;margin:70px auto 0;padding-bottom:100px;min-height:800px}
+.faq-list ul{display:flex;flex-direction:column;gap:15px}
+.faq-list ul li{display:flex;gap:15px}
+.faq-list ul li em{width:360px;height:72px;border:solid 2px #cd8828;background:#312c27;color:#fff;font-size:30px;font-weight:500;display:flex;align-items:center;justify-content:center}
+.faq-list ul li a{flex:1;background:#312c27;font-size:30px;color:#fff;font-weight:700;display:flex;align-items:center;height:72px;padding:0 50px}
+.sub-tit{font-size:72px;color:#fff;font-weight:500;text-align:center}
+
+.faq-view-wrap{background:#000;padding:60px 120px}
+.faq-view-subj{border-bottom:solid 1px #b57e41;font-size:34px;font-weight:500;color:#fff;display:flex;gap:30px;padding-bottom:15px;margin-bottom:15px}
+.faq-view-cont{background:#312c27;min-height:570px;padding:50px;font-size:38px;color:#fff}
+
+.personal-info{background:#271e13;width:1760px;margin:0 auto;padding:20px 40px;color:#8c8ca7}
+.personal-info-tit{font-size:36px;font-weight:500;padding-bottom:10px}
+.personal-info-txt{font-size:30px;line-height:40px;font-weight:300}
+.personal-info-guide{border-bottom:solid 1px #f60;color:#e98c28;font-size:40px;font-weight:500;text-align:center;margin:30px 120px}
+.personal-info-form{padding:0 120px 100px;display:flex;flex-direction: column;gap:15px}
+.personal-info-row{display:flex;gap:25px}
+.personal-info-label em{border:solid 3px #cd8828;background:#312c27;color:#fff;font-size:30px;font-weight:500;width:240px;height:49px;display:flex;align-items:center;justify-content:center;}
+.personal-info-cont{flex:1}
+.personal-info-cont input[type='text'],
+.personal-info-cont input[type='email']{width:320px;height:49px;background:#312c27;color:#fff;font-size:30px;border:0;padding:0 10px}
+.personal-info-cont input[type='file']{width:100%;height:49px;background:#312c27;color:#fff;font-size:30px;border:0;padding:0 10px}
+
+.file-upload-wrap{display:flex;gap:20px}
+.file-upload {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    background: #312c27;
+    color: white;
+    height:49px;
+    cursor: pointer;
+    font-size: 30px;
+    width:320px;
+    text-align:center;
+}
+.file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+.filename {
+    font-size: 30px;
+    color: #fff;
+}
+
+.personal-info-cont select{position:relative;width:320px;height:49px;background:#312c27;color:#fff;font-size:30px;border:0;padding:0 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+
+    background:#312c27 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='15'><path fill-rule='evenodd' fill='rgb(205,136,40)' d='M23.234,2.796 L13.955,12.074 L13.956,12.075 L11.637,14.394 L0.039,2.797 L2.359,0.478 L11.636,9.754 L20.914,0.476 L23.234,2.796 Z'/></svg>") no-repeat right 10px center;
+    background-size: 24px 15px; /* SVG 크기 조절 */
+}
+.personal-info-cont textarea{width:100%;height:600px;background:#312c27;color:#fff;font-size:30px;border:0;padding:10px}
+
+.radio-box-group {
+    display: flex;
+    gap: 10px;
+}
+
+.radio-box {
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-box input[type="radio"] {
+    display: none; /* 기본 라디오 숨기기 */
+}
+
+.radio-box span {
+    display: inline-block;
+    border: 2px solid #e6bd1b;
+    background-color: #312c27;
+    color:#fff;
+    font-weight: bold;
+    height:49px;
+    font-size:30px;
+    line-height:45px;
+    width:155px;
+    text-align:center;
+    transition: all 0.3s ease;
+}
+
+/* 선택된 상태 */
+.radio-box input[type="radio"]:checked + span {
+    background-color: #e6bd1b; /* 초록색 배경 */
+    color: #000;
+    border-color: #e6bd1b;
+}
