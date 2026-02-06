@@ -664,3 +664,17 @@ nav {
     color: #000;
     border-color: #e6bd1b;
 }
+
+.sub-terms{background:#000;padding-top:0}
+.terms-wrap{padding:80px 120px 100px}
+.terms-aside{text-align:right}
+.terms-aside select{position:relative;width:320px;height:49px;background:#312c27;color:#fff;font-size:30px;border:0;padding:0 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+
+    background:#312c27 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='15'><path fill-rule='evenodd' fill='rgb(205,136,40)' d='M23.234,2.796 L13.955,12.074 L13.956,12.075 L11.637,14.394 L0.039,2.797 L2.359,0.478 L11.636,9.754 L20.914,0.476 L23.234,2.796 Z'/></svg>") no-repeat right 10px center;
+    background-size: 24px 15px; /* SVG 크기 조절 */
+}
+.terms-cont{background:#312c27;min-height:570px;padding:50px;font-size:38px;color:#fff;margin-top:20px}
