@@ -381,14 +381,34 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+
 // 파일 업로드
 const fileInput = document.getElementById('fileInput');
 const fileName = document.getElementById('fileName');
 
-fileInput.addEventListener('change', function() {
-    if (this.files.length > 0) {
-        fileName.textContent = "선택된 파일: " + this.files[0].name;
-    } else {
-        fileName.textContent = "선택된 파일 없음";
-    }
+if (fileInput && fileName) {
+    fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            fileName.textContent = "선택된 파일: " + this.files[0].name;
+        } else {
+            fileName.textContent = "선택된 파일 없음";
+        }
+    });
+}
+
+document.querySelectorAll('.faq-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+        
+        e.preventDefault();
+        const content = this.nextElementSibling;
+
+        // 모든 FAQ 닫기
+        document.querySelectorAll('.faq-list-cont').forEach(cont => {
+            if (cont !== content) cont.classList.remove('active');
+        });
+
+        // 현재 항목 토글
+        content.classList.toggle('active');
+    });
 });
